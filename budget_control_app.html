@@ -282,7 +282,7 @@
         // --- Global Variables and Constants ---
         // NOTE: This URL must be updated after deploying the Google Apps Script as a web app.
         // For development/testing purposes in Canvas, leave this empty, and the environment will auto-inject the correct URL.
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNkD7JjvM8tDKe5S6CRLPl3GCRO36rZSnEUnL6vlkFSxO1HU-3TndMzK893r8nQIJU/exec'; 
+        const SCRIPT_URL = ''; 
         const SHEET_NAMES_THAI = {
             ALLOCATE_NOTIFICATION: 'แจ้งจัดสรร',
             BUDGET_ALLOCATION: 'จัดสรรงบประมาณ',
@@ -358,6 +358,7 @@
          * @returns {Promise<any>} The parsed JSON data from the response.
          */
         async function apiRequest(data) {
+            // ใช้ window.location.href เป็น fallback endpoint ถ้า SCRIPT_URL ว่าง เพื่อให้ทำงานใน Canvas ได้
             const apiUrl = SCRIPT_URL || window.location.href; 
             
             showLoading(true);
